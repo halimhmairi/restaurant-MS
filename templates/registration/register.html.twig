@@ -1,0 +1,23 @@
+{% extends 'layout/app.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %} 
+   <div class="register-box" style="margin:10% auto;"> 
+     <div class="card"> 
+       <div class="card-header pb-0 text-start">
+           <h4 class="font-weight-bolder">Register</h4> 
+         </div> 
+       <div class="card-body login-card-body"> 
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    {{ form_end(registrationForm) }}
+    </div>
+    </div>
+{% endblock %}
