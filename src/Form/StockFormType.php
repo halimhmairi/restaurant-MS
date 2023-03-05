@@ -6,16 +6,35 @@ use App\Entity\Stock;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ResetType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class StockFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('quantity')
-            ->add('price')
+            ->add('name',null,[
+                "attr" => ["class"=>"form-control"]
+            ])
+            ->add('description',null,[
+                "attr" => ["class"=>"form-control"]
+            ])
+            ->add('quantity',null,[
+                "attr" => ["class"=>"form-control"]
+            ])
+            ->add('price',NumberType::class,[
+                'label' => 'Total Price',
+                'attr' => ["class"=>"form-control"]
+            ])
+            ->add('Reset', ResetType::class , [
+                "attr"=> ["class"=>"btn btn-danger float-left"]
+            ])
+            ->add('Save', SubmitType::class ,[
+                "attr"=>["class" => "btn btn-primary float-right"]
+            ]);
         ;
     }
 
@@ -23,6 +42,7 @@ class StockFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Stock::class,
+            'csrf_protection' => true
         ]);
     }
 }

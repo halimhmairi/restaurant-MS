@@ -38,6 +38,8 @@ class StockRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    
+    //https://nicolasfz-code.medium.com/symfony-paginer-les-r%C3%A9sultats-dune-requ%C3%AAte-avec-doctrine-ebe7873197c9
 
 //    /**
 //     * @return Stock[] Returns an array of Stock objects

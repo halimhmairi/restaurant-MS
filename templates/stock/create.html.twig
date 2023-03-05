@@ -1,7 +1,64 @@
 {% extends 'layout/app.html.twig' %}
 
-{% block body %}
+{% block body %} 
+<div class="container">
+   <div class="row  pt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-primary">
 
-<h1>create stock</h1>
-{{ form(form) }}
+        <div class="card-header card-header-primary">
+        <h1 class="card-title">create stock</h1>
+        </div>
+
+       <div class="card-body"> 
+
+        {{ form_start(form) }} 
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_row(form.name) }}
+                </div>
+                </div>
+                <div class="col-md-6" id="some-custom-id">
+                <div class="form-group"> 
+                    {{ form_row(form.price) }}
+                </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                    {{ form_row(form.quantity) }}
+                    </div>
+                </div>
+                <div class="col-md-6" id="some-custom-id">
+                    <div class="form-group">
+
+                    {{ form_row(form.description) }}
+                   </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="card-footer">
+        
+              <div class="row">
+                <div class="col-md-12">
+                    {{ form_row(form.Reset) }}
+                    {{ form_row(form.Save) }}
+                </div> 
+              </div> 
+        </div>
+
+         {{ form_end(form) }}
+
+     </div>
+    </div>
+    </div>
+
+
+
+</div>
 {% endblock %}
