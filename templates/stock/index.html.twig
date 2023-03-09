@@ -42,6 +42,12 @@
                       <a href="{{ path('delete_stock',{'stockId':stock.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </td>
                     </tr>
+                    {% else %}
+
+                     <tr class="tr-no-result-found-in-list">
+                        <td class="td-no-result-found-in-list">No result found</td>
+                     </tr> 
+
                     {% endfor %}
                   </tbody>
                 </table>

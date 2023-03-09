@@ -1,0 +1,60 @@
+{% extends 'layout/app.html.twig' %}
+
+{% block title %}Hello OrderController!{% endblock %}
+
+{% block body %}
+
+<div class="container" style="padding-top:5%;">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+          <div class="card">
+                <div class="card-header">Orders 
+                <a href="{{ path('create_menu') }}" class="btn btn-primary" style="float: right;"><i class="fa fa-plus"></i></a>
+                <a  class="btn btn-primary float-right mr-2" href="{{ path('generate_order',{'number':5}) }}">Generate 5 records</a>
+                </div>
+                <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    {% for order in orders %}
+
+                     <tr>
+                      <th scope="row">{{ order.id }}</th>
+                      <td>{{ "__" }}</td>
+                      <td>{{ order.TotalPrice }}</td>
+                      <td>{{ order.quantity }}</td>
+                      <td>
+                      <a href="#" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                      <a href="{{ path('delete_stock',{'stockId':order.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                    </td>
+                    </tr>
+
+                    {% else %}
+
+                      <tr class="tr-no-result-found-in-list">
+                        <td class="td-no-result-found-in-list">No result found</td>
+                     </tr> 
+
+                    {% endfor %}
+
+                  </tbody>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
