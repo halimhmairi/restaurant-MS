@@ -1,0 +1,72 @@
+{% extends "layout/app.html.twig" %}
+
+{% block title %} Title {% endblock %}
+
+{% block body %}
+
+<div class="container">
+   <div class="row  pt-5">
+      <div class="col-md-6 m-auto">
+      <div class="card card-primary">
+      
+        <div class="card-header card-header-primary">
+        <h1 class="card-title">Create Order</h1>
+        </div>
+        <div class="card-body">
+
+        {{ form_start(form) }}
+
+        <div class="row">
+            
+            <div class="col-md-6">
+            <div class="form-group">
+                {{ form_row(form.quantity) }}
+            </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_row(form.total_price) }}                
+                </div>
+            </div>
+
+        
+
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        {{ form_row(form.delivery_date) }}
+                    </div>
+                </div> 
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_row(form.state) }}                
+                    </div>
+                </div> 
+ 
+        </div>
+
+
+        </div>
+
+        
+        
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ form_row(form.Save) }}
+                    </div>
+                    
+                </div>
+            </div>
+
+        {{ form_end(form) }}
+
+      </div>
+
+      </div>
+   </div>
+</div>
+
+{% endblock %}
