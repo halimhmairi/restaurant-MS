@@ -22,6 +22,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
 
+  <!-- Custom styles -->
   <link rel="stylesheet" href="{{asset('dist/css/form/style.css')}}">
   <link rel="stylesheet" href="{{asset('dist/css/table/style.css')}}">
 
@@ -155,15 +156,15 @@
    <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
-        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light"> app name</span>
+        <img src="{{ asset('dist/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">{{ my_app_name }}</span>
       </a> 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('dist/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="/" class="d-block">test dev</a>
@@ -180,32 +181,19 @@
                Dashboard
                 <i class="right fas fa-angle-left"></i>
               </p>
-            </a>
-            <ul class="nav nav-treeview">
-             <li class="nav-item">
-              <a class="nav-link" href="">
-                  <i class="nav-icon fa-sharp fa-solid fa-business-time"></i>
-                  <p>
-                   Jobs
-                    <span class="badge badge-info right">2</span>
-                  </p>
-                </a>
-              </li>  
-           </ul>
-
+            </a>  
 
           <li class="nav-item">
-            <a class="nav-link" href="">
-              <i class="nav-icon far fa-calendar-alt"></i>
+            <a class="nav-link" href=""> 
+              <i class="nav-icon fa-solid fa-chart-pie"></i>
               <p>
-               Reports
-                <span class="badge badge-info right">2</span>
+               Reports 
               </p>
              </a>
           </li> 
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_menu') }}">
+            <a class="nav-link {% if app.request.get('_route') == 'app_menu' %} active {% endif %} " href="{{ path('app_menu') }}">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                Kichen
@@ -216,8 +204,8 @@
 
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_order') }}">
-              <i class="nav-icon far fa-calendar-alt"></i>
+            <a class="nav-link {% if app.request.get('_route') == 'app_order' %} active {% endif %}" href="{{ path('app_order') }}"> 
+              <i class="nav-icon fa-sharp fa-solid fa-cart-shopping"></i>
               <p>
                Orders
                 <span class="badge badge-info right">2</span>
@@ -226,16 +214,15 @@
           </li> 
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_stock') }}">
-              <i class="nav-icon far fa-calendar-alt"></i>
+            <a class="nav-link {% if app.request.get('_route') == 'app_stock' %} active {% endif %}" href="{{ path('app_stock') }}">  
+              <i class="nav-icon fa-sharp fa-solid fa-truck"></i>
               <p>
-               Stock Manger
-                <span class="badge badge-info right">2</span>
+               Stock Manger 
               </p>
              </a>
           </li> 
              
-        </ul>
+        </ul><br><br>
 
         <div class="sidenav-footer mx-3 "> 
             <a class="btn btn-primary btn-sm mb-0 w-100  mb-3" 
