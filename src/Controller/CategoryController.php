@@ -27,7 +27,6 @@ class CategoryController extends AbstractController
     {
        $categorys =  $this->catRepo->findAll();
 
-       //return $this->json($categorys);
        return $this->render('category/index.html.twig', compact('categorys'));
     }
 

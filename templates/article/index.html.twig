@@ -9,12 +9,37 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/halim/OneDrive/Desktop/mesprojet/restaurant-MS/src/Controller/ArticleController.php'|file_link(0) }}">src/Controller/ArticleController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/halim/OneDrive/Desktop/mesprojet/restaurant-MS/templates/article/index.html.twig'|file_link(0) }}">templates/article/index.html.twig</a></code></li>
-    </ul>
+          <div class="card">
+                <div class="card-header">Article 
+                <a href="{{ path('create_category') }}" class="btn btn-primary" style="float: right;"><i class="fa fa-plus"></i></a>
+                <a  class="btn btn-primary float-right mr-2" href="{{ path('generate_menu',{'number':5}) }}">Generate 5 records</a>
+                </div>
+                <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Description</th> 
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for article in articles %}
+                          <tr>
+                        <td>{{ article.id }}</td> 
+                        <td>{{ article.name }}</td> 
+                        <td>{{ article.description }}</td> 
+                        <td>
+                            <a href="{{ path('delete_category',{'id':category.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a> 
+                        </td>
+                        </tr>
+                    {% endfor %} 
+                    </tbody>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
