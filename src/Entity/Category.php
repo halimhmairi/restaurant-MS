@@ -1,16 +1,19 @@
 <?php
 
 namespace App\Entity;
+use App\Repository\ArticleRepository;
 
-use App\Repository\MenuRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
-
-#[ORM\Entity(repositoryClass: MenuRepository::class)]
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
+#[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ApiResource]
-class Menu
+class Category
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -20,24 +23,18 @@ class Menu
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?float $price = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $offre = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\OneToMany(mappedBy: 'menu_id', targetEntity: Order::class, orphanRemoval: true)]
-    private Collection $orders;
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Article::class)]
+    private Collection $articles;
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -57,18 +54,6 @@ class Menu
         return $this;
     }
 
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -81,24 +66,12 @@ class Menu
         return $this;
     }
 
-    public function getOffre(): ?string
-    {
-        return $this->offre;
-    }
-
-    public function setOffre(?string $offre): self
-    {
-        $this->offre = $offre;
-
-        return $this;
-    }
-
     public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -106,29 +79,29 @@ class Menu
     }
 
     /**
-     * @return Collection<int, Order>
+     * @return Collection<int, Article>
      */
-    public function getOrders(): Collection
+    public function getArticles(): Collection
     {
-        return $this->orders;
+        return $this->articles;
     }
 
-    public function addOrder(Order $order): self
+    public function addArticle(Article $article): self
     {
-        if (!$this->orders->contains($order)) {
-            $this->orders->add($order);
-            $order->setMenuId($this);
+        if (!$this->articles->contains($article)) {
+            $this->articles->add($article);
+            $article->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeOrder(Order $order): self
+    public function removeArticle(Article $article): self
     {
-        if ($this->orders->removeElement($order)) {
+        if ($this->articles->removeElement($article)) {
             // set the owning side to null (unless already changed)
-            if ($order->getMenuId() === $this) {
-                $order->setMenuId(null);
+            if ($article->getCategory() === $this) {
+                $article->setCategory(null);
             }
         }
 

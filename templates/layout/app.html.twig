@@ -200,8 +200,7 @@
                 <span class="badge badge-info right">2</span>
               </p>
              </a>
-          </li>
-
+          </li> 
 
           <li class="nav-item">
             <a class="nav-link {% if app.request.get('_route') == 'app_order' %} active {% endif %}" href="{{ path('app_order') }}"> 
@@ -218,6 +217,15 @@
               <i class="nav-icon fa-sharp fa-solid fa-truck"></i>
               <p>
                Stock Manger 
+              </p>
+             </a>
+          </li> 
+
+          <li class="nav-item">
+            <a class="nav-link {% if app.request.get('_route') == 'app_category' %} active {% endif %}" href="{{ path('app_category') }}">  
+              <i class="nav-icon fa-sharp fa-solid fa-truck"></i>
+              <p>
+               Category Manger 
               </p>
              </a>
           </li> 
