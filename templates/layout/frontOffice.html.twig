@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>{% block title %} test {% endblock %}</title> 
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ 
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body>
+<header class="navbar-light mx-md-5">
+	<!-- Logo Nav START -->
+  <nav class="navbar navbar-expand-md">
+    <div class="container-fluid">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="index.html">
+				<img class="light-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo">
+				<img class="dark-mode-item navbar-brand-item" src="assets/images/logo-light.svg" alt="logo">
+			</a>
+			<!-- Logo END -->
+
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+				<span class="d-none d-sm-inline-block small">Menu</span>
+			</button>
+
+			<!-- Main navbar START -->
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll ms-auto">
+					<li class="nav-item"> <a class="nav-link" href="#demos">Demos</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="https://support.webestica.com/" target="_blank">Support</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="../docs/index.html">Documentation</a> </li>
+				</ul>
+			</div>
+			<!-- Main navbar END -->
+
+			<!-- Button START -->
+			<div class="ms-xl-auto">
+				<a href="https://themes.getbootstrap.com/product/booking-multipurpose-booking-and-directory-theme/" target="_blank" class="btn btn-sm btn-primary mb-0 ms-3">Buy now</a>
+			</div>
+			<!-- Button END -->
+
+    </div>
+  </nav>
+	<!-- Logo Nav END -->
+</header>
+<main>
+ {% block body %}
+ 
+ {% endblock %}
+</main>
+ {% block javascript %}
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+ {% endblock %}
+</body>
+</html>
