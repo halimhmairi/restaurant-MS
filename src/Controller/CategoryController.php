@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 
-#[Route('/admin')]
+#[Route('/admin/category')]
 class CategoryController extends AbstractController
 {
 
@@ -22,7 +22,7 @@ class CategoryController extends AbstractController
 
     }
 
-    #[Route('/category', name: 'app_category')]
+    #[Route('/', name: 'app_category')]
     public function index(): Response
     {
        $categorys =  $this->catRepo->findAll();
@@ -30,25 +30,24 @@ class CategoryController extends AbstractController
        return $this->render('category/index.html.twig', compact('categorys'));
     }
 
-    #[Route('/category/create', name : 'create_category')] 
+    #[Route('/create', name : 'create_category')] 
     public function create() :  Response 
     {
         $category = new Category();
         $category_form = $this->createForm(CategoryFormType::class,$category,['action' => $this->generateUrl('store_category')]);
-      
         $category_form = $category_form->createView();
 
         return $this->render('category/create.html.twig',compact('category_form'));
     }
 
-    #[Route('/category/store' , name : 'store_category')]
+    #[Route('/store' , name : 'store_category')]
     public function store(Request $request ,SluggerInterface $slugger) : Response
     {
         $category = new Category();
         $category_form = $this->createForm(CategoryFormType::class,$category);
         $category_form->handleRequest($request);
 
-        if($category_form->isSubmitted() && $category_form->isValid())
+        if($category_form->isSubmitted())
         {
             $data = $category_form->getData();
             $image_category = $category_form->get('image')->getData();
@@ -77,10 +76,21 @@ class CategoryController extends AbstractController
             $this->addFlash('success','add');
             return $this->redirectToRoute('app_category'); 
         }
+        dd($category_form->getErrors());
 
     }
 
-    #[Route('/category/delete/{id}' , name : 'delete_category')]
+    #[route('/edit/{id}',name:'edit_category')]
+    public function edit($id) : Response 
+    {
+      $category = new Category();
+      $category_form = $this->createForm(CategoryFormType::class,$category,['action' => $this->generateUrl('store_category')]);
+      $category_form = $category_form->createView();
+
+      return $this->render('category/edit.html.twig',compact('category_form'));
+    }
+
+    #[Route('/delete/{id}' , name : 'delete_category')]
     public function delete($id)
     {
        $category = $this->catRepo->find($id);

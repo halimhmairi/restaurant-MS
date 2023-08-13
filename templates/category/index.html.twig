@@ -32,6 +32,7 @@
                         <td>{{ category.description }}</td> 
                         <td>
                             <a href="{{ path('delete_category',{'id':category.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a> 
+                            <a href="{{ path('edit_category',{'id':category.id}) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a> 
                         </td>
                         </tr>
                     {% endfor %} 
