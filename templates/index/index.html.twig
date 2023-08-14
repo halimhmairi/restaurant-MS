@@ -3,6 +3,8 @@
 {% block title %}Hello IndexController!{% endblock %}
 
 {% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <div class="container my-5">
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
@@ -26,7 +28,19 @@
       {{ component('Categories',{categorys:categorys}) }}
     </div>
   </div>
-  <div class="album py-5 bg-body-tertiary">
+  <div class="container px-4 py-5">
+  <div class="d-flex justify-content-between border-bottom">
+   
+  <h2 class="pb-2">Popular</h2>
+       <i data-feather="circle"></i>
+
+   <div>
+    <button class="p-2 pl-4 pr-4 bg-primary text-white border-0 rounded-pill"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="p-2 pl-4 pr-4 bg-primary text-white border-0 rounded-pill"><i class="fa-solid fa-chevron-right"></i></button>
+   </div>
+  </div>
+  
+
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"> 
         {{ component('Menus',{menus:menus}) }}
