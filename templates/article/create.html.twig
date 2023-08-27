@@ -1,76 +1,77 @@
 {% extends 'layout/app.html.twig' %}
 
-{% block title %} title {% endblock %}
+{% block title %}
+	title
+{% endblock %}
 
 {% block body %}
-<div class="container">
-   <div class="row pt-5">
-    <div class="col-md-6 m-auto">
-      <div class="card card-primary">
+	<div class="container">
+		<div class="row pt-5">
+			<div class="col-md-6 m-auto">
+				<div class="card card-primary">
 
-        <div class="card-header card-header-primary">
-          <h1 class="card-title">Create article</h1>
-        </div>
-        
-       <div class="card-body"> 
+					<div class="card-header card-header-primary">
+						<h1 class="card-title">Create article</h1>
+					</div>
 
-       {{ form_start(article_form) }}
-            <div class="row">
-            
-              <div class="col-md-6">
-                  <div class="form-group">
-                      {{ form_row(article_form.name) }}
-                  </div>
-              </div>
+					<div class="card-body">
 
-                <div class="col-md-6">
-                  <div class="form-group">
-                      {{ form_row(article_form.price) }}
-                  </div>
-              </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                      {{ form_row(article_form.category) }}
-                  </div>
-              </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                      {{ form_row(article_form.image) }}
-                  </div>
-              </div>
+						{{ form_start(article_form) }}
+						<div class="row">
 
-               <div class="col-md-12">
-                  <div class="form-group">
-                      {{ form_row(article_form.promotion) }}
-                  </div>
-              </div>
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_row(article_form.name) }}
+								</div>
+							</div>
 
-              <div class="col-md-12">
-              <div class="form-group">
-                      {{ form_row(article_form.description) }}
-              </div>
-              </div>
- 
-             <div class="col-md-6">
-                <div class="form-group">
-                    {{ form_row(article_form.Reset) }}
-                </div>
-             </div>
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_row(article_form.price) }}
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_row(article_form.category) }}
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_row(article_form.image) }}
+								</div>
+							</div>
 
-             <div class="col-md-6">
-             <div class="form-group">
-                {{ form_row(article_form.Save) }}
-             </div>
-             </div>
+							<div class="col-md-12">
+								<div class="form-group">
+									{{ form_row(article_form.promotion) }}
+								</div>
+							</div>
 
-            </div>
-       {{ form_end(article_form) }}
+							<div class="col-md-12">
+								<div class="form-group">
+									{{ form_row(article_form.description) }}
+								</div>
+							</div>
 
-            </div>
-    </div>
-    </div>
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_row(article_form.Reset) }}
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_row(article_form.Save) }}
+								</div>
+							</div>
+
+						</div>
+						{{ form_end(article_form) }}
+
+					</div>
+				</div>
+			</div>
 
 
-
-</div>
-{% endblock %}
+		</div>
+	{% endblock %}

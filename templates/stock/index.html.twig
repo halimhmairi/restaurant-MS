@@ -38,7 +38,7 @@
                       <td>{{ stock.price }}</td>
                       <td>{{ stock.quantity }}kg</td>
                       <td>
-                      <a href="#" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                      <a href="{{ path('edit_stock' , {'id':stock.id}) }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                       <a href="{{ path('delete_stock',{'stockId':stock.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </td>
                     </tr>

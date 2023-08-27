@@ -26,6 +26,7 @@ class CategoryRepository extends ServiceEntityRepository
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {
+
             $this->getEntityManager()->flush();
         }
     }
@@ -39,7 +40,31 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
+    public function update($id, $data): void
+    {
+        $category = $this->find($id);
+
+        if (!$category) {
+            throw new \Exception('category not found');
+        }
+
+        if (isset($data['name'])) {
+            $category->setName($data['name']);
+        }
+
+
+        if (isset($data['description'])) {
+            $category->setDescription($data['description']);
+        }
+
+        if (isset($data['image'])) {
+            $category->setImage($data['image']);
+        }
+
+        $this->getEntityManager()->flush();
+    }
+
+    //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */
 //    public function findByExampleField($value): array
@@ -54,7 +79,7 @@ class CategoryRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Category
+    //    public function findOneBySomeField($value): ?Category
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

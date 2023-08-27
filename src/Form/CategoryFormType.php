@@ -14,21 +14,23 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 
 use Symfony\Component\Validator\Constraints\File;
+
 class CategoryFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name',null,[
+            ->add('name', null, [
                 "label" => "Name",
-                "attr" => ["class"=>"form-control"]
+                "attr" => ["class" => "form-control"]
             ])
-            ->add('description',TextareaType::class,[
-                "label" =>"Description",
-                "attr" => ["class"=>"form-control"]
+            ->add('description', TextareaType::class, [
+                "label" => "Description",
+                "attr" => ["class" => "form-control"]
             ])
-            ->add('image',FileType::class,[
-                "attr" =>["class"=>"form-control"],
+            ->add('image', FileType::class, [
+                "attr" => ["class" => "form-control"],
+                "required" => false,
                 "constraints" => [
                     new File([
                         'maxSize' => '1024k',
@@ -41,11 +43,11 @@ class CategoryFormType extends AbstractType
                     ])
                 ]
             ])
-            ->add('Reset',ResetType::class,[
-                "attr" => ["class"=>"btn btn-danger float-left"]
+            ->add('Reset', ResetType::class, [
+                "attr" => ["class" => "btn btn-danger float-left"]
             ])
-            ->add('Save',SubmitType::class,[
-                "attr" => ["class"=>"btn btn-primary float-right"]
+            ->add('Save', SubmitType::class, [
+                "attr" => ["class" => "btn btn-primary float-right"]
             ])
         ;
     }

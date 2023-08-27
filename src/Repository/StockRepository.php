@@ -4,7 +4,9 @@ namespace App\Repository;
 
 use App\Entity\Stock;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\DependencyInjection\Parameter;
 
 /**
  * @extends ServiceEntityRepository<Stock>
@@ -38,25 +40,43 @@ class StockRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-    
+
+    public function update($data): bool
+    {
+        return $this->createQueryBuilder('s')
+            ->update(Stock::class, 's')
+            ->set('s.name', ':name')
+            ->set('s.description', ':description')
+            ->set('s.quantity', ':quantity')
+            ->set('s.price', ':price')
+            ->where('s.id = :id')
+            ->setParameter('id', $data['id'])
+            ->setParameter('price', $data['price'])
+            ->setParameter('quantity', $data['quantity'])
+            ->setParameter('description', $data['description'])
+            ->setParameter('name', $data['name'])
+            ->getQuery()
+            ->execute();
+
+    }
     //https://nicolasfz-code.medium.com/symfony-paginer-les-r%C3%A9sultats-dune-requ%C3%AAte-avec-doctrine-ebe7873197c9
 
-//    /**
+    //    /**
 //     * @return Stock[] Returns an array of Stock objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findByExampleField($value): array
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('s.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->execute()
+        ;
+    }
 
-//    public function findOneBySomeField($value): ?Stock
+    //    public function findOneBySomeField($value): ?Stock
 //    {
 //        return $this->createQueryBuilder('s')
 //            ->andWhere('s.exampleField = :val')
