@@ -1,66 +1,75 @@
 {% extends 'layout/app.html.twig' %}
 
-{% block title %} Create Menu {% endblock %}
+{% block title %}
+	Create Menu
+{% endblock %}
 
 {% block body %}
 
-<div class="container">
-   <div class="row  pt-5">
-    <div class="col-md-6 m-auto">
-      <div class="card card-primary">
-      
-        <div class="card-header card-header-primary">
-        <h1 class="card-title">Create Menu</h1>
-        </div>
-        <div class="card-body">
-        {{ form_start(formMenu) }} 
-            <div class="row">
-            <div class="col-md-6">
-            <div class="form-group">
-                {{ form_row(formMenu.name) }}
-            </div>
-            </div>
-            <div class="col-md-6" id="some-custom-id">
-            <div class="form-group"> 
-                {{ form_row(formMenu.price) }}
-            </div>
-            </div>
-            </div>
+	<div class="container">
+		<div class="row  pt-5">
+			<div class="col-md-6 m-auto">
+				<div class="card card-primary">
 
-            <div class="row">
-            <div class="col-md-6">
-            <div class="form-group">
-                {{ form_row(formMenu.offre) }}
-            </div>
-            </div>
-            <div class="col-md-6" id="some-custom-id">
-            <div class="form-group"> 
-                {{ form_row(formMenu.image) }}
-            </div>
-            </div>
-            </div>
+					<div class="card-header card-header-primary">
+						<h1 class="card-title">Create Menu</h1>
+					</div>
+					<div class="card-body">
+						{{ form_start(formMenu) }}
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_row(formMenu.name) }}
+								</div>
+							</div>
+							<div class="col-md-6" id="some-custom-id">
+								<div class="form-group">
+									{{ form_row(formMenu.price) }}
+								</div>
+							</div>
+						</div>
 
-            <div class="row">
-            <div class="col-md-12">
-            <div class="form-group">
-                {{ form_row(formMenu.description) }}
-            </div>
-            </div> 
-            </div>
-        </div>
-        <div class="card-footer">
-        <div class="row">
-          <div class="col-md-12">
-          {{ form_row(formMenu.Save) }}
-          </div>
-        </div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_row(formMenu.offre) }}
+								</div>
+							</div>
+							<div class="col-md-6" id="some-custom-id">
+								<div class="form-group">
+									{{ form_row(formMenu.image) }}
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									{{ form_row(formMenu.Category) }}
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									{{ form_row(formMenu.description) }}
+								</div>
+							</div>
+						</div>
 
-        </div>
-        {{ form_end(formMenu) }}
+					</div>
+					<div class="card-footer">
+						<div class="row">
+							<div class="col-md-12">
+								{{ form_row(formMenu.Save) }}
+							</div>
+						</div>
 
-        </div>
-      </div>
-    </div>
-</div>
+					</div>
+					{{ form_end(formMenu) }}
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}

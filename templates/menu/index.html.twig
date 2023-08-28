@@ -1,64 +1,73 @@
 {% extends 'layout/app.html.twig' %}
 
 
-{% block title %} title {% endblock %}
+{% block title %}
+	title
+{% endblock %}
 
 {% block body %}
-<div class="container" style="padding-top:5%;float:right;">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
+	<div class="container" style="padding-top:5%;float:right;">
+		<div class="row justify-content-center">
+			<div class="col-md-10">
 
-            {% for msg in app.session.flashBag.get('success') %}
-            <div class="alert alert-success">
-               {{ msg }}
-               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            {% endfor %}
-            
-            <div class="card">
-                <div class="card-header">Menus 
-                <a href="{{ path('create_menu') }}" class="btn btn-primary" style="float: right;"><i class="fa fa-plus"></i></a> 
-                </div>
-                <div class="card-body">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Price</th>
-                      <th scope="col">Offre</th>
-                      <th scope="col">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                        {% for menu in menus %}
+				{% for msg in app.session.flashBag.get('success') %}
+					<div class="alert alert-success">
+						{{ msg }}
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				{% endfor %}
 
-                        <tr>
-                        <td>{{ menu.id }} <img src="{{ menu.image }}" width="60"></td>
-                        <td>{{ menu.name | slice(0,8) ~ '...' }}</td>
-                        <td>{{ menu.price }}</td>
-                        <td>{{ menu.offre }}</td>
-                        <td>
-                        <a href="#" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-                        <a href="{{ path('delete_menu',{'menuId':menu.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                        </td>
-                        </tr>
+				<div class="card">
+					<div class="card-header">Menus
+						<a href="{{ path('create_menu') }}" class="btn btn-primary" style="float: right;">
+							<i class="fa fa-plus"></i>
+						</a>
+					</div>
+					<div class="card-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Name</th>
+									<th scope="col">Price</th>
+									<th scope="col">Offre</th>
+									<th scope="col">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for menu in menus %}
 
-                        {% else %}
+									<tr>
+										<td>{{ menu.id }}
+											<img src="{{ menu.image }}" width="60"></td>
+										<td>{{ menu.name | slice(0,8) ~ '...' }}</td>
+										<td>{{ menu.price }}</td>
+										<td>{{ menu.offre }}</td>
+										<td>
+											<a href="#" class="btn btn-primary">
+												<i class="fa fa-pencil"></i>
+											</a>
+											<a href="{{ path('delete_menu',{'menuId':menu.id}) }}" class="btn btn-danger">
+												<i class="fa fa-trash"></i>
+											</a>
+										</td>
+									</tr>
 
-                        <tr class="tr-no-result-found-in-list">
-                        <td class="td-no-result-found-in-list">No result found</td>
-                        </tr> 
+								{% else %}
 
-                        {% endfor %} 
+									<tr class="tr-no-result-found-in-list">
+										<td class="td-no-result-found-in-list">No result found</td>
+									</tr>
 
-                    </tbody>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+								{% endfor %}
+
+							</tbody>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

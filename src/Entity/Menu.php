@@ -35,6 +35,10 @@ class Menu
     #[ORM\OneToMany(mappedBy: 'menu_id', targetEntity: Order::class, orphanRemoval: true)]
     private Collection $orders;
 
+    #[ORM\ManyToOne(inversedBy: 'category')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -104,6 +108,19 @@ class Menu
 
         return $this;
     }
+    
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+    
 
     /**
      * @return Collection<int, Order>
