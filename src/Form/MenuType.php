@@ -32,7 +32,8 @@ class MenuType extends AbstractType
                 "attr"=>["class"=>"form-control"]
             ])
             ->add('image',FileType::class,[
-                "attr"=>["class"=>"form-control"]
+                "attr"=>["class"=>"form-control"],
+                "required" => false
             ])
             ->add('Category',EntityType::class,[
                 "label" => "Category",

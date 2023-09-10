@@ -39,6 +39,23 @@ class MenuRepository extends ServiceEntityRepository
         }
     }
 
+    public function update($data)
+    {
+        return $this->createQueryBuilder("s")->update(Menu::class,"s")
+        ->set("s.name",":name")
+        ->set("s.price",":price")
+        ->set("s.description",":description")
+        ->set("s.offre",":offre")
+        ->where("s.id = :id")
+        ->setParameter("id",$data['id'])
+        ->setParameter("name",$data["name"])
+        ->setParameter("price",$data["price"])
+        ->setParameter("description",$data["description"])
+        ->setParameter("offre",$data["offre"])
+        ->getQuery()
+        ->execute();
+    }
+
 //    /**
 //     * @return Menu[] Returns an array of Menu objects
 //     */

@@ -41,12 +41,12 @@
 
 									<tr>
 										<td>{{ menu.id }}
-											<img src="{{ menu.image }}" width="60"></td>
+											<img src="/images/{{ menu.image }}" width="60"></td>
 										<td>{{ menu.name | slice(0,8) ~ '...' }}</td>
 										<td>{{ menu.price }}</td>
 										<td>{{ menu.offre }}</td>
 										<td>
-											<a href="#" class="btn btn-primary">
+											<a href="{{path('edit_menu',{'id':menu.id}) }}" class="btn btn-primary">
 												<i class="fa fa-pencil"></i>
 											</a>
 											<a href="{{ path('delete_menu',{'menuId':menu.id}) }}" class="btn btn-danger">
