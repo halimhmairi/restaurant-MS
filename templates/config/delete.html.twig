@@ -1,0 +1,24 @@
+{% extends 'layout/app.html.twig' %}
+
+{% block title %}Delete
+{% endblock %}
+
+{% block body %}
+	<div class="container" style="padding-top:5%;float:right;">
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<div class="card">
+					<div class="card-header bg-secondary">
+						Delete - 
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Deletion confirmation</h5>
+						<p class="card-text">The item was successfully deleted.</p>
+						<a href="#" class="btn btn-danger float-right ml-3">Delete</a>
+						<a href="{{ path('redirectBack_config',{routeName: app.request.attributes.get('_route') }) }}" class="btn btn-secondary float-right">Cancal</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -5,3 +5,11 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+delete_item:
+    path: '/admin/config/delete'
+    controller: 'App\Controller\ConfigController::delete'
+
+redirectBack_config:
+    path: '/admin/config/back/{routeName}'
+    controller: 'App\Controller\ConfigController::redirectBack'

@@ -46,12 +46,14 @@ class MenuRepository extends ServiceEntityRepository
         ->set("s.price",":price")
         ->set("s.description",":description")
         ->set("s.offre",":offre")
+        ->set("s.image",":image")
         ->where("s.id = :id")
         ->setParameter("id",$data['id'])
         ->setParameter("name",$data["name"])
         ->setParameter("price",$data["price"])
         ->setParameter("description",$data["description"])
         ->setParameter("offre",$data["offre"])
+        ->setParameter("image",$data["image"])
         ->getQuery()
         ->execute();
     }
