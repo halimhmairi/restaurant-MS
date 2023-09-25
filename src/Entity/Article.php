@@ -31,9 +31,16 @@ class Article
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[ORM\ManyToOne(targetEntity:"App\Entity\Category", inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
+
+
+      /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+
+    public ?Category $category = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;

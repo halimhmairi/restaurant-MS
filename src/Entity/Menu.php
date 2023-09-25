@@ -33,11 +33,12 @@ class Menu
     private ?string $image = null;
 
     #[ORM\OneToMany(mappedBy: 'menu_id', targetEntity: Order::class, orphanRemoval: true)]
-    private Collection $orders;
+    public Collection $orders;
 
     #[ORM\ManyToOne(inversedBy: 'category')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
+    public ?Category $category = null;
+ 
 
     public function __construct()
     {
@@ -119,7 +120,7 @@ class Menu
         $this->category = $category;
 
         return $this;
-    }
+    } 
     
 
     /**

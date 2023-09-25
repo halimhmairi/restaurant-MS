@@ -39,6 +39,19 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByCategory($category_id) : array 
+    {
+        $res =  $this->createQueryBuilder('m')
+        ->where("m.category_id = :id")
+        ->setParameter('id',$category_id)
+        ->getQuery()
+        ->getResult();
+
+
+        return $res;
+    }
+
+
 //    /**
 //     * @return Article[] Returns an array of Article objects
 //     */

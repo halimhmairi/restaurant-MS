@@ -29,8 +29,19 @@ class Category
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Article::class)]
-    private Collection $articles;
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: "App\Entity\Article")]
+
+
+     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
+     */
+
+    public Collection $articles;
+
+
+    #[ORM\OneToMany(targetEntity: Menu::class, mappedBy: 'category', orphanRemoval: true)]
+
+    public Collection $menu;
 
     public function __construct()
     {

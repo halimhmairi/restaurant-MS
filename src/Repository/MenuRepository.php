@@ -41,24 +41,38 @@ class MenuRepository extends ServiceEntityRepository
 
     public function update($data)
     {
-        return $this->createQueryBuilder("s")->update(Menu::class,"s")
-        ->set("s.name",":name")
-        ->set("s.price",":price")
-        ->set("s.description",":description")
-        ->set("s.offre",":offre")
-        ->set("s.image",":image")
-        ->where("s.id = :id")
-        ->setParameter("id",$data['id'])
-        ->setParameter("name",$data["name"])
-        ->setParameter("price",$data["price"])
-        ->setParameter("description",$data["description"])
-        ->setParameter("offre",$data["offre"])
-        ->setParameter("image",$data["image"])
-        ->getQuery()
-        ->execute();
+        return $this->createQueryBuilder("s")->update(Menu::class, "s")
+            ->set("s.name", ":name")
+            ->set("s.price", ":price")
+            ->set("s.description", ":description")
+            ->set("s.offre", ":offre")
+            ->set("s.image", ":image")
+            ->where("s.id = :id")
+            ->setParameter("id", $data['id'])
+            ->setParameter("name", $data["name"])
+            ->setParameter("price", $data["price"])
+            ->setParameter("description", $data["description"])
+            ->setParameter("offre", $data["offre"])
+            ->setParameter("image", $data["image"])
+            ->getQuery()
+            ->execute();
     }
 
-//    /**
+    public function findByCategory($category_id)
+    {
+
+        $entityManager = $this->getEntityManager();
+
+        $q = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Menu p  
+            WHERE p.category = :id'
+        )->setParameter('id', $category_id);
+        return $q->getArrayResult();
+
+    }
+
+    //    /**
 //     * @return Menu[] Returns an array of Menu objects
 //     */
 //    public function findByExampleField($value): array
@@ -73,7 +87,7 @@ class MenuRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Menu
+    //    public function findOneBySomeField($value): ?Menu
 //    {
 //        return $this->createQueryBuilder('m')
 //            ->andWhere('m.exampleField = :val')

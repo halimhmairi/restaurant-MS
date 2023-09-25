@@ -1,13 +1,17 @@
-   {% for menu in menus %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src="{{ menu.image }}">
-            <div class="card-body">
-                <p>{{ menu.name | slice(0,40) ~ '...' }} <span class="badge bg-danger">10%</span></p>
-              <div class="d-flex justify-content-between align-items-center">
-                <small class="text-body-secondary">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div> 
-        {% endfor %}
+{% for menu in menus %}
+	<div class="col">
+		<a href="{{ path('app_menu_item',{'id':menu.id}) }}">
+			<div class="card shadow-sm">
+				<img src="images/{{ menu.image }}">
+				<div class="card-body">
+					<p>{{ menu.name | slice(0,40) ~ '...' }}
+						<span class="badge bg-danger">10%</span>
+					</p>
+					<div class="d-flex justify-content-between align-items-center">
+						<small class="text-body-secondary">9 mins</small>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+{% endfor %}

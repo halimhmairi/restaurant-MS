@@ -1,0 +1,13 @@
+{% extends "layout/frontOffice.html.twig" %}
+{% block title %}title
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+			{{ component('Menus',{menus:menus}) }}
+		</div>
+	</div>
+
+{% endblock %}
