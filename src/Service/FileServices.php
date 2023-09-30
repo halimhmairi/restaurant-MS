@@ -13,7 +13,7 @@ class FileServices extends AbstractController
         $this->slugger = $slugger;
     }
 
-    private function multiple($formMenuFiles) : array
+    private function multiple($formMenuFiles) : array | string
     {
         $filePaths = [];
 
@@ -33,7 +33,7 @@ class FileServices extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    dd("folder not found"); 
+                  return  $e->getMessage();
                 }
 
                 $filePaths[] = $newFilename;
