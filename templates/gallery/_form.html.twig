@@ -1,0 +1,28 @@
+<div class="card-body">
+	{{ form_start(form) }}
+	<div class="row">
+
+		<div class="col-md-12">
+			<div class="form-group">
+				{{ form_row(form.images) }}
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-group">
+				{{ form_row(form.image) }}
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-group">
+				{{ form_row(form.reset) }}
+				{{ form_row(form.save) }}
+			</div>
+		</div>
+
+
+		{# <button class="btn">{{ button_label|default('Save') }}</button> #}
+	</div>
+	{{ form_end(form) }}
+</div>

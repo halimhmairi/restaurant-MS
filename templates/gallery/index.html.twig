@@ -1,0 +1,45 @@
+{% extends 'layout/app.html.twig' %}
+
+{% block title %}Gallery index
+{% endblock %}
+
+{% block body %} 
+	<div class="example-wrapper">
+		<div class="card">
+			<div class="card-header">Categorys
+				<a href="{{ path('app_gallery_new') }}" class="btn btn-primary" style="float: right;">
+					<i class="fa fa-plus"></i>
+				</a>
+			</div>
+			<div class="card-body">
+
+				<h1>Gallery index</h1>
+
+				<table id="example1" class="table table-bordered table-striped">
+
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for gallery in galleries %}
+							<tr>
+								<td>{{ gallery.id }}</td>
+								<td>
+									<a href="{{ path('app_gallery_show', {'id': gallery.id}) }}">show</a>
+									<a href="{{ path('app_gallery_edit', {'id': gallery.id}) }}">edit</a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="2">no records found</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'layout/app.html.twig' %}
+
+{% block title %}New Gallery
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row pt-5">
+			<div class="col-md-6 m-auto">
+				<div class="card card-primary">
+
+					<div class="card-header card-header-primary">
+						<h1 class="card-title">Create new Gallery</h1>
+					</div>
+
+					{{ include('gallery/_form.html.twig') }}
+
+					<a href="{{ path('app_gallery_index') }}">back to list</a>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

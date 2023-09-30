@@ -38,6 +38,7 @@
 		<!-- Custom styles -->
 		<link rel="stylesheet" href="{{asset('dist/css/form/style.css')}}">
 		<link rel="stylesheet" href="{{asset('dist/css/table/style.css')}}">
+		<link rel="stylesheet" href="{{asset('dist/css/style.css')}}">
 
 
 	</head>
@@ -272,6 +273,15 @@
 									<i class="nav-icon fa-sharp fa-solid fa-truck"></i>
 									<p>
 										Article Manger
+									</p>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link {% if app.request.get('_route') == 'app_gallery_index' %} active {% endif %}" href="{{ path('app_gallery_index') }}">
+									<i class="nav-icon fa-sharp fa-solid fa-truck"></i>
+									<p>
+										Gallery Manger
 									</p>
 								</a>
 							</li>

@@ -35,6 +35,9 @@ class Menu
     #[ORM\OneToMany(mappedBy: 'menu_id', targetEntity: Order::class, orphanRemoval: true)]
     public Collection $orders;
 
+    #[ORM\OneToMany(mappedBy: 'image', targetEntity: Gallery::class)]
+    public Collection $gallery;
+
     #[ORM\ManyToOne(inversedBy: 'category')]
     #[ORM\JoinColumn(nullable: false)]
     public ?Category $category = null;
@@ -42,7 +45,7 @@ class Menu
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
+        $this->orders = new ArrayCollection(); 
     }
 
     public function getId(): ?int
