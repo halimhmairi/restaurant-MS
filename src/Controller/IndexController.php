@@ -43,7 +43,10 @@ class IndexController extends AbstractController
 
     #[Route('/menu-item/{id}' , name: 'app_menu_item')]
     public function menuItem($id)  {
+
         $menu = $this->menuRepo->find($id);
-        return $this->render('index/menu-item.html.twig',compact('menu'));
+        $images = $menu->getGallery()->toArray()[0]->getImages();
+        
+        return $this->render('index/menu-item.html.twig',compact('menu','images'));
     }
 }

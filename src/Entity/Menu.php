@@ -41,11 +41,11 @@ class Menu
     #[ORM\ManyToOne(inversedBy: 'category')]
     #[ORM\JoinColumn(nullable: false)]
     public ?Category $category = null;
- 
+
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection(); 
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -112,7 +112,7 @@ class Menu
 
         return $this;
     }
-    
+
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -123,8 +123,16 @@ class Menu
         $this->category = $category;
 
         return $this;
-    } 
-    
+    }
+
+    /**
+     * @return Collection<int, Gallery>
+     */
+    public function getGallery(): Collection
+    {
+        return $this->gallery;
+    }
+
 
     /**
      * @return Collection<int, Order>

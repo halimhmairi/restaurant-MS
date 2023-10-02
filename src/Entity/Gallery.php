@@ -46,7 +46,7 @@ class Gallery
 
     public function getImages(): array | string | null
     {
-        return json_decode($this->images);
+        return json_decode(json_decode($this->images));
     }
 
     public function setImages(array | string $images): self
